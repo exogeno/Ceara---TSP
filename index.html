@@ -15,7 +15,7 @@
             height: 827px;
         }
         </style>
-        <title></title>
+        <title>Rodovias Ceará TSP</title>
     </head>
     <body>
         <div id="map">
@@ -542,6 +542,21 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/01TramoCamocimChaval_12.png" /> 01 Tramo Camocim - Chaval': layer_01TramoCamocimChaval_12,'<img src="legend/02TramoItapipocaParra_11.png" /> 02 Tramo Itapipoca - Parra': layer_02TramoItapipocaParra_11,'<img src="legend/03TramoTauaAntoninadoNorte_10.png" /> 03 Tramo Taua - Antonina do Norte': layer_03TramoTauaAntoninadoNorte_10,'<img src="legend/04TramoAlegreBarraodeAquiraz_9.png" /> 04 Tramo Alegre - Barrao de Aquiraz': layer_04TramoAlegreBarraodeAquiraz_9,'<img src="legend/05TramoSalitreSantaQuiteria_8.png" /> 05 Tramo Salitre - Santa Quiteria': layer_05TramoSalitreSantaQuiteria_8,'<img src="legend/06TramoCamposSalesCruceta_7.png" /> 06 Tramo Campos Sales - Cruceta': layer_06TramoCamposSalesCruceta_7,'<img src="legend/07TramoGranjeiroRodTransamazonica_6.png" /> 07 Tramo Granjeiro - Rod. Transamazonica': layer_07TramoGranjeiroRodTransamazonica_6,'<img src="legend/08Tramo_5.png" /> 08 Tramo': layer_08Tramo_5,'<img src="legend/09Tramo_4.png" /> 09 Tramo': layer_09Tramo_4,'<img src="legend/10Tramo_3.png" /> 10 Tramo': layer_10Tramo_3,'<img src="legend/Municipios_2.png" /> Municipios': layer_Municipios_2,'<img src="legend/Estados_1.png" /> Estados': layer_Estados_1,"Google Maps": layer_GoogleMaps_0,},{collapsed:false}).addTo(map);
         setBounds();
+L.Control.Watermark = L.Control.extend({
+        onAdd: function(map) {
+        var img = L.DomUtil.create('img');
+        img.src = 'https://www.iadb.org/themes/custom/iadb/images/logos/logo-ES-01b.png';
+        img.style.width = '400px';
+        return img;
+        },
+        onRemove: function(map) {
+        // Nothing to do here
+        }
+        });
+        L.control.watermark = function(opts) {
+        return new L.Control.Watermark(opts);
+        }
+        L.control.watermark({ position: 'bottomleft' }).addTo(map);          
         </script>
     </body>
 </html>
